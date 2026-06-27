@@ -7,6 +7,8 @@
 #define SDA_PIN 21
 #define SCL_PIN 22
 #define NUM_LEDS 144
+const uint8_t ignitionSpeed = 2;
+const uint16_t frameTime = 10;
 const char* WIFI_NAME="Lightsaber";
 const char* WIFI_PASS="kyber123";
 const int DEFAULT_R=186;
