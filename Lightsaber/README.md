@@ -1,1 +1,9 @@
-This is the starter project skeleton. Future sections will flesh out each module.
+Battery +
+    |
+   100kΩ
+    |
+    +------ GPIO34
+    |
+    33kΩ
+    |
+Battery -
