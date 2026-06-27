@@ -4,6 +4,29 @@
 #include <Arduino.h>
 
 // =====================================================
+// Blade Ignition Mode
+// =====================================================
+
+enum IgnitionStyle {
+    IGNITION_STANDARD,
+    IGNITION_FAST,
+    IGNITION_UNSTABLE,
+    IGNITION_REVERSE,
+    IGNITION_CENTER_OUT
+};
+
+// =====================================================
+// Blade Retraction Mode
+// =====================================================
+
+enum RetractionStyle {
+    RETRACTION_STANDARD,
+    RETRACTION_FAST,
+    RETRACTION_REVERSE,
+    RETRACTION_FLICKER
+};
+
+// =====================================================
 // Blade Operating Mode
 // =====================================================
 
