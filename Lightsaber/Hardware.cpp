@@ -51,6 +51,8 @@ initLED();
 
 initButton();
 
+initI2C();
+    
 initBNO();
 
 initDFPlayer();
@@ -65,44 +67,50 @@ initWiFi();
         "==========="
     );
 
-    Serial.print(
+    Serial.println(SABER_NAME);
+
+    Serial.print(FIRMWARE_VERSION);
+
+    serial.println(" ");
+    
+    Serial.println(
         "Blade: "
     );
 
-    Serial.println("OK");
+    Serial.print("OK");
 
-    Serial.print(
+    Serial.println(
         "BNO085: "
     );
 
-    Serial.println(
+    Serial.print(
         bnoReady ?
         "OK":"FAIL"
     );
 
-    Serial.print(
+    Serial.println(
         "DFPlayer: "
     );
 
-    Serial.println(
+    Serial.print(
         dfReady ?
         "OK":"FAIL"
     );
 
-    Serial.print(
+    Serial.println(
         "Bluetooth: "
     );
 
-    Serial.println(
+    Serial.print(
         bluetoothReady ?
         "OK":"FAIL"
     );
 
-    Serial.print(
+    Serial.println(
         "WiFi: "
     );
 
-    Serial.println(
+    Serial.print(
         wifiReady ?
         "OK":"FAIL"
     );
@@ -114,6 +122,8 @@ initWiFi();
 
 void initLED(){
     strip.begin();
+    
+    strip.setBrightness(MAX_BRIGHTNESS);
 
     strip.clear();
 
@@ -132,16 +142,19 @@ void initButton(){
     Serial.println("Button OK");
 }
 
-void initBNO(){
+void initI2C(){
     Wire.begin(
         SDA_PIN,
         SCL_PIN
-    );
+);
+}
+
+void initBNO(){
 
     Serial.println("I2C OK");
 
     if(
-        bno08x.begin_I2C(0x4B)
+        bno08x.begin_I2C(BNO085_ADDRESS);
     ){
 
         bnoReady=true;
@@ -200,8 +213,7 @@ void initDFPlayer(){
 
 void initBluetooth(){
     if(
-        SerialBT.begin(
-            "KyberOS"
+        SerialBT.begin(BLUETOOTH_NAME);
         )
     ){
 
@@ -212,6 +224,12 @@ void initBluetooth(){
         );
 
     }
+    else {
+
+    bluetoothReady = false;
+    Serial.println("Bluetooth FAILED");
+
+}
 }
 
 void initWiFi(){
@@ -220,19 +238,20 @@ void initWiFi(){
         WIFI_PASS
     );
 
-    wifiReady=true;
+wifiReady = WiFi.softAP(WIFI_NAME, WIFI_PASS);
 
-    Serial.println(
-        "WiFi OK"
-    );
+if (wifiReady) {
 
-    Serial.print(
-        "IP: "
-    );
+    Serial.println("WiFi OK");
+    Serial.print("IP: ");
+    Serial.println(WiFi.softAPIP());
 
-    Serial.println(
-        WiFi.softAPIP()
-    );
+}
+else {
+
+    Serial.println("WiFi FAILED");
+
+}
 }
 
 void updateHardware() {
