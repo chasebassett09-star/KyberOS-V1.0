@@ -8,7 +8,7 @@
 #include <HardwareSerial.h>
 #include <WebServer.h>
 
-#include "Blade.h"
+#include "BladeTypes.h"
 
 // =====================================================
 // Hardware Objects
