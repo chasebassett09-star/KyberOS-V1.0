@@ -7,7 +7,7 @@
 
 #define SABER_NAME "KyberOS"
 
-#define FIRMWARE_VERSION "1.0.0"
+#define FIRMWARE_VERSION "v1.0.0"
 
 // =====================================================
 // PIN DEFINITIONS
@@ -76,6 +76,11 @@
 #define STOP_SWING_THRESHOLD    0.2f
 
 #define CLASH_THRESHOLD        18.0f
+
+// =====================================================
+// BLUETOOTH
+// =====================================================
+#define BLUETOOTH_NAME "KyberOS"
 
 // =====================================================
 // WIFI
