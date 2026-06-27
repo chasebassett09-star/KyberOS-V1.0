@@ -71,6 +71,8 @@
 #define SWING_MEDIUM_THRESHOLD  2.0f
 #define SWING_FAST_THRESHOLD    4.0f
 
+#define BNO085_ADDRESS 0x4B
+
 #define STOP_SWING_THRESHOLD    0.2f
 
 #define CLASH_THRESHOLD        18.0f
