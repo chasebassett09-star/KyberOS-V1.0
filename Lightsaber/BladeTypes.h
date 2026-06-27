@@ -50,6 +50,31 @@ enum BladeProfile {
 };
 
 // =====================================================
+// Blade Effect
+// =====================================================
+enum BladeEffect : uint16_t {
+
+    EFFECT_NONE      = 0,
+
+    EFFECT_FLICKER   = 1 << 0,
+
+    EFFECT_UNSTABLE  = 1 << 1,
+
+    EFFECT_PULSE     = 1 << 2,
+
+    EFFECT_RAINBOW   = 1 << 3,
+
+    EFFECT_FIRE      = 1 << 4,
+
+    EFFECT_LOCKUP    = 1 << 5,
+
+    EFFECT_DRAG      = 1 << 6,
+
+    EFFECT_MELT      = 1 << 7
+
+};
+
+// =====================================================
 // Blade Settings
 // =====================================================
 
@@ -80,9 +105,7 @@ struct BladeSettings {
 
     // Flags
     bool enabled;
-    bool flicker;
-    bool unstable;
-    bool rainbow;
+    uint16_t effects;
 };
 
 #endif
